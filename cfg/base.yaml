@@ -1,0 +1,37 @@
+DEVICE: cuda:0
+MODEL_POSE:
+  WEIGHT: models/pose/yolov8l-pose.pt
+  IOU: 0.7
+  CONF: 0.25
+  IMGSZ: 640
+  CLASS_IDX: [0]
+  CLASS_NAMES: ['Person']
+  STREAM: True
+  PERSIST: True
+  HALF: True
+  INT8: False
+  FORMAT: engine
+  TRACKER: botsort.yaml
+MODEL_ACTION:
+  WEIGHT: models/action/best_12_10.pt
+  CLASS_NAMES: ['44','blend','fall','laying_down','sitting','standing','walking']
+  MAX_LEN_KEYPOINT: 30
+  MAX_MISS_FRAME: 5
+  DELETE: 15
+  THRESH: 10
+  COLOR_DEFAULT: [0, 255, 0]
+  COLOR_FALLDOWN: [0, 0, 255]
+  ACTION_DEFAULT: 'pending...'
+CAMERA:
+  STREAM: 0
+  WRITER_VIDEO_PATH: output/video/stream.avi
+  SKIP_FRAME: 1
+  SAVE_VIDEO: False
+  SHOW_VIDEO: True
+PLOT:
+  COLOR_DEFAUT: [0, 0, 255]
+  THICNKESS: 2
+  FONTSCALE: 1
+  RADIUS: 3
+  LINE_WIDTH: 1
+
